@@ -20,15 +20,18 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private SensorManager sensorManager;
     Sensor accelerometer;
 
-    TextView xValue, yValue, zValue;
+    TextView xValue, yValue, zValue, showStatus;
+    Button startButton, stopButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button startButton = (Button) findViewById(R.id.startButton);
-        Button stopButton = (Button) findViewById(R.id.stopButton);
+        showStatus = (TextView) findViewById(R.id.showStatus);
+
+        startButton = (Button) findViewById(R.id.startButton);
+        stopButton = (Button) findViewById(R.id.stopButton);
 
         xValue = (TextView) findViewById(R.id.xValue);
         yValue = (TextView) findViewById(R.id.yValue);
@@ -41,8 +44,12 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
 
         accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-        sensorManager.registerListener(MainActivity.this, accelerometer, SensorManager.SENSOR_DELAY_NORMAL);
-        Log.d(TAG, "onCreate: Registered accelerometer listener");
+
+        showStatus.setText("Status: Not running");
+
+        xValue.setText("X Value: 0.0");
+        yValue.setText("Y Value: 0.0");
+        zValue.setText("Z Value: 0.0");
     }
 
     @Override
@@ -50,9 +57,16 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         switch (v.getId()) {
             case R.id.startButton:
                 sensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_NORMAL);
+                Log.d(TAG, "Registered accelerometer listener");
+
+                showStatus.setText("Status: Running");
+
                 break;
             case R.id.stopButton:
                 sensorManager.unregisterListener(this);
+                Log.d(TAG, "Unregistered accelerometer listener");
+
+                showStatus.setText("Status: Not running");
 
                 xValue.setText("X Value: 0.0");
                 yValue.setText("Y Value: 0.0");
