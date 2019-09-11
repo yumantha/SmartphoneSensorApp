@@ -73,6 +73,4 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         yValue.setText("Y Value:\t\t" + event.values[1]);
         zValue.setText("Z Value:\t\t" + event.values[2]);
     }
-
-
 }
