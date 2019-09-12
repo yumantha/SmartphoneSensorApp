@@ -51,6 +51,7 @@
             android:layout_marginHorizontal="20dp"
             android:layout_weight="1"
             android:width="10dp"
+            android:background="#419CFF"
             android:text="Start" />
 
         <Button
@@ -60,6 +61,7 @@
             android:layout_marginHorizontal="20dp"
             android:layout_weight="1"
             android:paddingHorizontal="25sp"
+            android:background="#FF6060"
             android:text="Stop" />
 
     </LinearLayout>

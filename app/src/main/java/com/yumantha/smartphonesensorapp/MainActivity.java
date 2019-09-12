@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 
         showStatus.setText("Status: Not running");
+        stopButton.setEnabled(false);
 
         xValue.setText("X Value: 0.0");
         yValue.setText("Y Value: 0.0");
@@ -61,6 +62,9 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
                 showStatus.setText("Status: Running");
 
+                startButton.setEnabled(false);
+                stopButton.setEnabled(true);
+
                 break;
             case R.id.stopButton:
                 sensorManager.unregisterListener(this);
@@ -71,6 +75,11 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 xValue.setText("X Value: 0.0");
                 yValue.setText("Y Value: 0.0");
                 zValue.setText("Z Value: 0.0");
+
+                stopButton.setEnabled(false);
+                startButton.setEnabled(true);
+
+                break;
         }
     }
 
