@@ -60,8 +60,8 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
             android:layout_weight="1"
-            android:paddingHorizontal="25sp"
             android:background="#FF6060"
+            android:paddingHorizontal="25sp"
             android:text="Stop" />
 
     </LinearLayout>
